@@ -9,28 +9,27 @@ This playbook uses `Packer` to prepare a Windows image to be used with Windows N
 ## How to use
 
 You should define the following variables to run it:
-- vcenter:
--
-    admin_username: User with Admin privileges in vCenter
-    admin_password: Admin user's password
-    server: vCenter FQDN or IP
-    datastore: vCenter Datastore name
-    network: Network Interface Card type (e.g.: vmxnet3, e1000e, etc.).
-    datacenter: vCenter Datacenter name
-    cluster: vCenter Cluster name
-    folder: vCenter Folder Name used to place the template
-    win_iso_path: The path to your Windows 2019 ISO e.g. (e.g.: "[datastore1] ISOs/WinServer2019.iso").
-- windows:
--  
-    vm_name: Windows Template Name
-    vm_cpu: Number of vCPU
-    vm_mem: Amount of Memory in Mb (e.g.: 16384)
-    vm_disk: Hard Drive Size in Mb (e.g.: 120000)
-    admin_passwd: admin123
-    input_locale: Input Locale (e.g.: en-US, en-ES)
-    system_locale: System Locale (e.g.: en-US, en-ES)
 
-- ssh\_pub\_key: Path to SSH Public Key. (e.g.: ~/.ssh/id_rsa.pub).
+ 1. vcenter:
+    1. admin_username: User with Admin privileges in vCenter
+    2. admin_password: Admin user's password
+    3. server: vCenter FQDN or IP
+    4. datastore: vCenter Datastore name
+    5. network: Network Interface Card type (e.g.: vmxnet3, e1000e, etc.).
+    6. datacenter: vCenter Datacenter name
+    7. cluster: vCenter Cluster name
+    8. folder: vCenter Folder Name used to place the template
+    9. win_iso_path: The path to your Windows 2019 ISO e.g. (e.g.: "[datastore1] ISOs/WinServer2019.iso").
+ 2. windows:
+    1. vm_name: Windows Template Name
+    2. vm_cpu: Number of vCPU
+    3. vm_mem: Amount of Memory in Mb (e.g.: 16384)
+    4. vm_disk: Hard Drive Size in Mb (e.g.: 120000)
+    5. admin_passwd: admin123
+    6. input_locale: Input Locale (e.g.: en-US, en-ES)
+    7. system_locale: System Locale (e.g.: en-US, en-ES)
+
+ 3. ssh\_pub\_key: Path to SSH Public Key. (e.g.: ~/.ssh/id_rsa.pub).
 
 Instructions to use it:
 
