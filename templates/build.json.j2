@@ -1,14 +1,14 @@
 {
    "builders":[
       {
-         "CPUs":"{{win_vm_cpu}}",
-         "RAM":"{{win_vm_mem}}",
+         "CPUs":"{{ windows.vm_cpu }}",
+         "RAM":"{{ windows.vm_mem }}",
          "RAM_reserve_all":true,
-         "cluster":"{{vsphere_cluster}}",
+         "cluster":"{{ vcenter.cluster }}",
          "communicator":"ssh",
          "convert_to_template":"true",
-         "datacenter":"{{vsphere_datacenter}}",
-         "datastore":"{{vsphere_datastore}}",
+         "datacenter":"{{ vcenter.datacenter }}",
+         "datastore":"{{ vcenter.datastore }}",
          "disk_controller_type":"lsilogic-sas",
          "firmware":"bios",
          "floppy_files":[
@@ -19,43 +19,43 @@
             "scripts/win-updates.ps1",
             "scripts/install-docker.ps1"
          ],
-         "folder":"{{vsphere_folder}}",
+         "folder":"{{ vcenter.folder }}",
          "guest_os_type":"windows9Server64Guest",
          "insecure_connection":"true",
          "iso_paths":[
-            "{{vcenter_win_iso_path}}",
-            "{{vcenter_vmwaretools_iso_path}}"
+            "{{ vcenter.win_iso_path }}",
+            "{{ vcenter.vmwaretools_iso_path }}"
          ],
          "network_adapters":[
             {
-               "network":"{{vsphere_network}}",
-               "network_card":"{{vsphere_network_card}}"
+               "network":"{{ vcenter.network }}",
+               "network_card":"{{ vcenter.network_card }}"
             }
          ],
-         "password":"{{vsphere_password}}",
+         "password":"{{ vcenter.admin_password }}",
          "storage":[
             {
-               "disk_size":"{{win_vm_disk}}",
+               "disk_size":"{{ windows.vm_disk }}",
                "disk_thin_provisioned":true
             }
          ],
          "type":"vsphere-iso",
-         "username":"{{vsphere_user}}",
-         "vcenter_server":"{{vsphere_server}}",
-         "vm_name":"{{win_vm_name}}",
-         "ssh_password":"{{win_admin_passwd}}",
+         "username":"{{ vcenter.admin_username }}",
+         "vcenter_server":"{{ vcenter.server }}",
+         "vm_name":"{{ windows.vm_name }}",
+         "ssh_password":"{{ windows.admin_passwd }}",
          "ssh_username":"Administrator",
          "ssh_timeout":"50m"
       }
    ],
    "provisioners":[
       {
-	"pause_before": "120s",
-	"inline":["ipconfig"],
-        "type":"powershell",
-	"elevated_user": "Administrator",
-        "elevated_password": "{{win_admin_passwd}}",
-	"max_retries":"10"
+      	"pause_before": "120s",
+      	"inline":["ipconfig"],
+              "type":"powershell",
+      	"elevated_user": "Administrator",
+              "elevated_password": "{{ windows.admin_passwd }}",
+      	"max_retries":"10"
       }
    ],
    "sensitive-variables":[

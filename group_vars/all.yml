@@ -1,0 +1,23 @@
+ssh_pub_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+vcenter:
+  admin_username: administrator@vsphere.local
+  admin_password: Password1!
+  server: 10.0.0.200
+  datastore: ds0
+  network: 10.0.0.x-24
+  network_card: vmxnet3
+  datacenter: dc0
+  cluster: LAB
+  folder: Templates
+  win_iso_path: "[ds0] ISOs/Windows.2019.iso"
+  vmwaretools_iso_path: "[] /usr/lib/vmware/isoimages/windows.iso"
+download:
+  packer: https://releases.hashicorp.com/packer/1.6.6/packer_1.6.6_linux_amd64.zip
+windows:
+  vm_name: win-ocp-image-template
+  vm_cpu: 4
+  vm_mem: 16384
+  vm_disk: 120000
+  admin_passwd: admin123
+  input_locale: en-US
+  system_locale: en-US
